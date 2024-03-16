@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import Home from './component/Card'
+import Navbar from './component/Navbar/navbar';
 
 const App = () => {
   const [products,setProduct]=useState([
@@ -27,11 +28,13 @@ const App = () => {
 ])
    
   return (
+    <>
+     
+    <Navbar/>
     <div className="app">
-
-       <h1>E-commerece</h1>
        <Home products={products}/>
     </div>
+    </>
   );
 };
 
