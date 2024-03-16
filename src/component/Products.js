@@ -1,9 +1,4 @@
-import './App.css';
-import { useState } from 'react';
-import Home from './component/Card'
-
-const App = () => {
-  const [products,setProduct]=useState([
+const productsArr = [
     {
     title: 'Colors',
     price: 100,
@@ -24,15 +19,6 @@ const App = () => {
     price: 100,
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
     }
-])
-   
-  return (
-    <div className="app">
-
-       <h1>E-commerece</h1>
-       <Home products={products}/>
-    </div>
-  );
-};
-
-export default App;
+]
+    
+    
