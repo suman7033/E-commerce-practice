@@ -8,14 +8,20 @@ const AuthContext=React.createContext({
 })
 
 export const AuthContextProvider=(props)=>{
-   const [items,setItmes]=useState();
+   const [items,setItmes]=useState([]);
    const [price,setPrice]=useState();
    const [quantity,setQuantity]=useState();
+
+   const addItemHandler=(addData)=>{
+    console.log("auth",addData);
+     setItmes((prev)=>[...prev,addData]);
+   }
 
 const contextValue={
     items: items,
     price: price,
-    quantity: quantity
+    quantity: quantity,
+    addItem: addItemHandler
 }
 
 return (

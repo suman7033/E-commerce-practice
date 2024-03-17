@@ -5,17 +5,17 @@ import Cart from './Cart';
 const navbar = () => {
   return (
     <div className='container'>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Home</a>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">Home</a>
     </div>
 
-    <div class="container-fluid">
-    <a class="navbar-brand" href="#">Store</a>
+    <div className="container-fluid">
+    <a className="navbar-brand" href="#">Store</a>
     </div>
 
-    <div class="container-fluid">
-    <a class="navbar-brand" href="#">About</a>
+    <div className="container-fluid">
+    <a className="navbar-brand" href="#">About</a>
     </div>
     <Cart/>
     </nav>

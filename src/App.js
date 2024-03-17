@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import Home from './component/Card'
+import Card from './component/Card'
 import Navbar from './component/Navbar/navbar';
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
      
     <Navbar/>
     <div className="app">
-       <Home products={products}/>
+       <Card products={products}/>
     </div>
     </>
   );
