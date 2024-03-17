@@ -4,7 +4,8 @@ import { useContext } from "react";
 const AuthContext=React.createContext({
     items: [],
     price: 0,
-    quantity: 0
+    quantity: 0,
+    isLoading: false
 })
 
 export const AuthContextProvider=(props)=>{
@@ -21,7 +22,7 @@ const contextValue={
     items: items,
     price: price,
     quantity: quantity,
-    addItem: addItemHandler
+    addItem: addItemHandler,
 }
 
 return (

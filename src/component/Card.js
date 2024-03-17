@@ -4,10 +4,13 @@ import AuthContext from '../store/auth-context';
 
 const Card = ({ products }) => {
   const [data,setData]=useState([]);
+  const [isLoading,setIsloading]=useState(false);
+
   const authCtx=useContext(AuthContext);
 
 
   const AddHandler = async (data) => {
+    setIsloading(true);
     try {
       const response = await fetch('https://practice-299c5-default-rtdb.firebaseio.com/user.json', {
         method: 'POST',
@@ -31,6 +34,7 @@ const Card = ({ products }) => {
         }
         const addData = await addedDataRes.json();
         //alert('Successfully added');
+        setIsloading(false)
        authCtx.addItem(addData);
         //console.log('Added Data:', addData);
       } else {
@@ -44,7 +48,8 @@ const Card = ({ products }) => {
 
   return (
     <div className='flex'>
-      {products.map((product, index) => {
+      {!isLoading ? 
+      <div className='flex'>{products.map((product, index) => {
         return (
           <div key={index}>
             <div className='product-item'>
@@ -55,7 +60,7 @@ const Card = ({ products }) => {
             </div>
           </div>
         );
-      })}
+      })}</div> : <img src='https://i.gifer.com/ZKZg.gif'/>}
     </div>
   );
 }
