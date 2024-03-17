@@ -1,25 +1,33 @@
-import React from 'react'
+import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cart from './Cart';
 
 const navbar = () => {
   return (
-    <div className='container'>
+    <div>
+    <ul className='container nav h4  border-4 p-2 border-primary position-relative m-8 fs-2 justify-content-center bg-dark border-bottom border-body'>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">Home</a>
-    </div>
+  <li className="nav-item">
+  <Link className="nav-link text-light bg-dark" aria-current="page" to="/">
+      HOME
+    </Link>
+    </li>
 
-    <div className="container-fluid">
-    <a className="navbar-brand" href="#">Store</a>
-    </div>
+    <li className="nav-item">
+    <Link className="nav-link text-light bg-dark" to="/store">
+      STORE
+    </Link>
+    </li>
 
-    <div className="container-fluid">
-    <a className="navbar-brand" href="#">About</a>
-    </div>
+    <li className="nav-item">
+    <Link className="nav-link text-light bg-dark" to="/about">
+      ABOUT
+    </Link>
+    </li>
     <Cart/>
     </nav>
-    </div>
+    </ul>
+  </div>
   )
 }
 

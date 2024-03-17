@@ -1,7 +1,16 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+  Navigate,
+} from "react-router-dom";
 import './App.css';
 import { useState } from 'react';
 import Card from './component/Card'
 import Navbar from './component/Navbar/navbar';
+import Home from "./component/Home";
+import About from "./component/About";
 
 const App = () => {
   const [products,setProduct]=useState([
@@ -29,11 +38,19 @@ const App = () => {
    
   return (
     <>
+     <BrowserRouter>
+       <Navbar/>
+       <Routes>
+        <Route path="/" element={<Home/>}/>
+       </Routes>
+      <Routes>
+         <Route path="/store" element={<Card products={products}/>}></Route>
+      </Routes>
+       <Routes>
+        <Route path="/about" element={<About/>}/>
+       </Routes>
+     </BrowserRouter>
      
-    <Navbar/>
-    <div className="app">
-       <Card products={products}/>
-    </div>
     </>
   );
 };
