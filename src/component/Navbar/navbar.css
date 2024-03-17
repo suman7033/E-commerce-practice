@@ -1,0 +1,31 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #007bff; /* Navbar background color */
+  }
+  
+  .navbar-nav {
+    margin-left: auto; /* Align nav items to the right */
+  }
+  
+  .nav-link {
+    color: #fff; /* Navbar link text color */
+    padding: 10px 10px; /*Padding around navbar links */
+    font-size: 20px; /* Increase font size */
+  }
+  
+  .nav-link:hover {
+    background-color: #05f52d; /* Darker blue color on hover */
+    border-radius: 5px;
+    width: 90px; /* Rounded corners on hover */
+  }
+  
+  .nav-item {
+    margin-right: 20px;
+    width: 230px; /* Spacing between navbar items */
+  }
+  
+  /* Optional: Adjust font size */
+  .nav-link {
+    font-size: 20px;
+  }
+  

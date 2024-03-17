@@ -1,0 +1,86 @@
+/* Home.css */
+
+/* Style for the entire Home component */
+.Home {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  /* Style for the heading */
+  .Home h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the buttons */
+  .latest-album {
+    background-color: #e85ab6;
+    color: #fefcfc;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .div1 {
+    background-color: #ebe2e2;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .play-btn {
+    background-color: #1ade6c;
+    color: #fefcfc;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .tour-item {
+    width: 90%; /* Adjust the width as needed */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tour-date,
+  .tour-place,
+  .tour-space-place {
+    font-size: 1.2rem;
+    margin: 5px;
+  }
+  
+  .buy-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .About-end {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: cadetblue;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  

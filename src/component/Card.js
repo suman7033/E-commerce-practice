@@ -51,7 +51,7 @@ const Card = ({ products }) => {
               <h3 className='title'>{product.title}</h3>
               <img src={product.imageUrl} alt='pic' />
               <h3 className='price'>{product.price}</h3>
-              <button className='addBtn' onClick={()=>AddHandler(product)}>ADD TO CART</button>
+              <button className='addBtn' onClick={()=>AddHandler(product)}><b>ADD TO CART</b></button>
             </div>
           </div>
         );

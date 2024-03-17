@@ -1,34 +1,31 @@
-import {Link} from 'react-router-dom'
+// navbar.js
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './navbar.css'; // Import the CSS file
 import Cart from './Cart';
 
-const navbar = () => {
+const Navbar = () => {
   return (
-    <div>
-    <ul className='container nav h4  border-4 p-2 border-primary position-relative m-8 fs-2 justify-content-center bg-dark border-bottom border-body'>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <li className="nav-item">
-  <Link className="nav-link text-light bg-dark" aria-current="page" to="/">
-      HOME
-    </Link>
-    </li>
-
-    <li className="nav-item">
-    <Link className="nav-link text-light bg-dark" to="/store">
-      STORE
-    </Link>
-    </li>
-
-    <li className="nav-item">
-    <Link className="nav-link text-light bg-dark" to="/about">
-      ABOUT
-    </Link>
-    </li>
-    <Cart/>
-    </nav>
-    </ul>
-  </div>
-  )
+    <div className='maindev'>
+      <nav className="navbar navbar-expand-lg navbar-dark">
+        <div className="container">
+          {/* Remove the "My Website" link */}
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/"><b>HOME</b></Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/store"><b>STORE</b></Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about"><b>ABOUT</b></Link>
+            </li>
+          </ul>
+          <Cart />
+        </div>
+      </nav>
+    </div>
+  );
 }
 
-export default navbar;
+export default Navbar;

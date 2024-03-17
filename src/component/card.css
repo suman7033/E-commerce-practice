@@ -26,6 +26,8 @@
     color: rgb(241, 240, 245);
     background-color: #6ada81;
     border-radius: 5px;
+    padding: 10px 10px 10px;
+    width: 300px;
     cursor: pointer;
 }
 
