@@ -6,11 +6,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import './App.css';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Card from './component/Card'
 import Navbar from './component/Navbar/navbar';
 import Home from "./component/Home";
 import About from "./component/About";
+import ShowCart from "./component/ShowCart";
+import AuthContext from "./store/auth-context";
 
 const App = () => {
   const [products,setProduct]=useState([
@@ -34,20 +36,38 @@ const App = () => {
     price: 100,
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
     }
-])
+]) 
+const [showdata,setshowdata]=useState([]);
+  const authCtx=useContext(AuthContext);
+  const responseData=authCtx.responseDataName;
+
+   const fetchData=async ()=>{
+      
+      const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user.json`)
+      const Data=await FetchData.json();
+      setshowdata([Data]);
+      console.log("useEffect",Data);
+      //authCtx.addItem(Data);
+   }
+  useEffect(()=>{
+    fetchData();
+  },[])
    
   return (
     <>
      <BrowserRouter>
        <Navbar/>
        <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path='/' element={<Home/>}/>
        </Routes>
       <Routes>
-         <Route path="/store" element={<Card products={products}/>}></Route>
+         <Route path='/store' element={<Card products={products}/>}></Route>
       </Routes>
        <Routes>
-        <Route path="/about" element={<About/>}/>
+        <Route path='/about' element={<About/>}/>
+       </Routes>
+       <Routes>
+        <Route path='/cart' element={<ShowCart/>}/>
        </Routes>
      </BrowserRouter>
      

@@ -5,6 +5,7 @@ import AuthContext from '../store/auth-context';
 const Card = ({ products }) => {
   const [data,setData]=useState([]);
   const [isLoading,setIsloading]=useState(false);
+  const [ShowError, setShowError]=useState(false);
 
   const authCtx=useContext(AuthContext);
 
@@ -21,15 +22,19 @@ const Card = ({ products }) => {
       });
   
       if (!response.ok) {
+        setIsloading(false);
         throw new Error('Failed to fetch data');
       }
   
       const responseData = await response.json();
       console.log('POST Response:', responseData);
-  
+      const responseDataName=responseData.name;
+      authCtx.responseDataName(responseDataName);
+
       if (responseData && responseData.name) {
         const addedDataRes = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${responseData.name}.json`);
         if (!addedDataRes.ok) {
+
           throw new Error('Failed to get added data');
         }
         const addData = await addedDataRes.json();
@@ -48,7 +53,7 @@ const Card = ({ products }) => {
 
   return (
     <div className='flex'>
-      {!isLoading ? 
+      {! isLoading ? 
       <div className='flex'>{products.map((product, index) => {
         return (
           <div key={index}>

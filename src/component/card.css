@@ -30,6 +30,10 @@
     width: 300px;
     cursor: pointer;
 }
+.error{
+    color: red;
+    background-color: #bf5c5c;
+}
 
 
 

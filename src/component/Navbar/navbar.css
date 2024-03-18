@@ -1,20 +1,23 @@
 /* Navbar Styles */
 .navbar {
     background-color: #007bff; /* Navbar background color */
+    width: 100%;
+    padding: 20px 0px 40px;
   }
+
   
   .navbar-nav {
     margin-left: auto; /* Align nav items to the right */
   }
   
   .nav-link {
-    color: #fff; /* Navbar link text color */
+    color: #f8f806; /* Navbar link text color */
     padding: 10px 10px; /*Padding around navbar links */
     font-size: 20px; /* Increase font size */
   }
   
   .nav-link:hover {
-    background-color: #05f52d; /* Darker blue color on hover */
+    background-color: #f75307; /* Darker blue color on hover */
     border-radius: 5px;
     width: 90px; /* Rounded corners on hover */
   }
@@ -28,4 +31,15 @@
   .nav-link {
     font-size: 20px;
   }
+
+  .img{
+    width: 50px;
+    cursor: pointer;
+    border-radius: 10px 10px 10px;
+}
+h5{
+  padding: 10p 0px 10px;
+  width: 80px;
+  color: rgb(9, 240, 20);
+}
   
