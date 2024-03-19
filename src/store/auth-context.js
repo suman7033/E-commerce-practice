@@ -5,7 +5,8 @@ const AuthContext=React.createContext({
     items: [],
     price: 0,
     quantity: 0,
-    responseDataName: ""
+    responseDataName: "",
+    SpecialProduct:[]
 })
 
 export const AuthContextProvider=(props)=>{
@@ -13,6 +14,7 @@ export const AuthContextProvider=(props)=>{
    const [price,setPrice]=useState();
    const [quantity,setQuantity]=useState();
    const [responseDataName,setResponseDataName]=useState('');
+   const [SpecialProduct,setSpecialProduct]=useState([]);
 
    const addItemHandler=(addData)=>{
      setItmes((prev)=>[...prev,addData]);
@@ -21,6 +23,10 @@ export const AuthContextProvider=(props)=>{
      setResponseDataName(name);
      console.log(name);
    }
+   const showSpecialProductHandler=(data)=>{
+      setSpecialProduct(data);
+      console.log("showSpecial",data);
+   }
 
 const contextValue={
     items: items,
@@ -28,7 +34,9 @@ const contextValue={
     responseDataName:responseDataName,
     quantity: quantity,
     addItem: addItemHandler,
-    responseDataName: ApiNameHandler
+    responseDataName: ApiNameHandler,
+    showSpecialProduct:showSpecialProductHandler,
+    SpecialProduct: SpecialProduct
 }
 
 return (

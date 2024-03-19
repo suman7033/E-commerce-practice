@@ -1,0 +1,36 @@
+.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 260px 40px;
+    border: 10px solid #64d826;
+    border-width: 10px;
+}
+
+.show img {
+    max-width: 50%;
+    margin-right: 20px;
+}
+
+.offers {
+    flex-grow: 1;
+}
+
+.offers h5 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.offers a {
+    display: block;
+    margin-bottom: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.offers a:hover {
+    text-decoration: underline;
+}
+.Price{
+    color: chartreuse;
+}

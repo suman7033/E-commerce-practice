@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import '../component/card.css';
 import AuthContext from '../store/auth-context';
+import { Link } from 'react-router-dom';
 
 const Card = ({ products }) => {
   const [data,setData]=useState([]);
@@ -50,6 +51,9 @@ const Card = ({ products }) => {
       console.error(error);
     }
   };
+  const ShowProduct=(data)=>{
+     authCtx.showSpecialProduct(data);
+  }
   return (
     <div className='flex'>
       {! isLoading ? 
@@ -58,7 +62,7 @@ const Card = ({ products }) => {
           <div key={index}>
             <div className='product-item'>
               <h3 className='title'>{product.title}</h3>
-              <img src={product.imageUrl} alt='pic' />
+              <Link to='/product'><img src={product.imageUrl} alt='pic' onClick={()=>ShowProduct(product)}/></Link>
               <h3 className='price'>{product.price}</h3>
               <button className='addBtn' onClick={()=>AddHandler(product)}><b>ADD TO CART</b></button>
             </div>

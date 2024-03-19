@@ -13,6 +13,7 @@ import Home from "./component/Home";
 import About from "./component/About";
 import ShowCart from "./component/ShowCart";
 import AuthContext from "./store/auth-context";
+import ShowSpecific from "./component/ShowSpecific";
 
 const App = () => {
   const [products,setProduct]=useState([
@@ -67,6 +68,7 @@ const [showdata,setshowdata]=useState([]);
         <Route path='/store' element={<Card products={products}/>}></Route>
         <Route path='/about' element={<About/>}/>
         <Route path='/cart' element={<ShowCart/>}/>
+        <Route path="/product" element={<ShowSpecific/>}/>
        </Routes>
      </BrowserRouter>
     </>
