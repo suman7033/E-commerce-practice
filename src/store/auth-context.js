@@ -15,7 +15,6 @@ export const AuthContextProvider=(props)=>{
    const [responseDataName,setResponseDataName]=useState('');
 
    const addItemHandler=(addData)=>{
-    console.log("auth",addData);
      setItmes((prev)=>[...prev,addData]);
    }
    const ApiNameHandler=(name)=>{

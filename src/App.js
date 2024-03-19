@@ -20,7 +20,7 @@ const App = () => {
     title: 'Colors',
     price: 100,
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    },    
+    },
     {
     title: 'Black and white Colors',
     price: 50,
@@ -39,19 +39,24 @@ const App = () => {
 ]) 
 const [showdata,setshowdata]=useState([]);
   const authCtx=useContext(AuthContext);
-  const responseData=authCtx.responseDataName;
 
    const fetchData=async ()=>{
-      
       const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user.json`)
       const Data=await FetchData.json();
-      setshowdata([Data]);
-      console.log("useEffect",Data);
-      //authCtx.addItem(Data);
+      let array=[];
+       
+      for (const key in Data) {
+          const innerObject = Data[key];
+          array.push(innerObject);                         
+      }
+      console.log("useEffect",array);
+      for(let i=0; i<array.length; i++){
+        authCtx.addItem(array[i]);
+      }
    }
   useEffect(()=>{
     fetchData();
-  },[])
+  },[]);
    
   return (
     <>
@@ -59,18 +64,11 @@ const [showdata,setshowdata]=useState([]);
        <Navbar/>
        <Routes>
         <Route path='/' element={<Home/>}/>
-       </Routes>
-      <Routes>
-         <Route path='/store' element={<Card products={products}/>}></Route>
-      </Routes>
-       <Routes>
+        <Route path='/store' element={<Card products={products}/>}></Route>
         <Route path='/about' element={<About/>}/>
-       </Routes>
-       <Routes>
         <Route path='/cart' element={<ShowCart/>}/>
        </Routes>
      </BrowserRouter>
-     
     </>
   );
 };

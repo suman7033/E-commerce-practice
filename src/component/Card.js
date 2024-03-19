@@ -40,8 +40,9 @@ const Card = ({ products }) => {
         const addData = await addedDataRes.json();
         //alert('Successfully added');
         setIsloading(false)
+      console.log('Added Data:', addData);
        authCtx.addItem(addData);
-        //console.log('Added Data:', addData);
+         
       } else {
         throw new Error('Response data is null or missing "name" field');
       }
@@ -49,8 +50,6 @@ const Card = ({ products }) => {
       console.error(error);
     }
   };
-  
-
   return (
     <div className='flex'>
       {! isLoading ? 
