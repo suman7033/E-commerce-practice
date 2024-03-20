@@ -1,19 +1,18 @@
-/* Navbar Styles */
 .navbar {
-    background-color: #007bff; /* Navbar background color */
+    background-color: #007bff; 
     width: 100%;
-    padding: 20px 0px 40px;
+    padding: 0px 0px 0px;
   }
 
   
   .navbar-nav {
-    margin-left: auto; /* Align nav items to the right */
+    margin-left: auto; 
   }
   
   .nav-link {
-    color: #f8f806; /* Navbar link text color */
-    padding: 10px 10px; /*Padding around navbar links */
-    font-size: 20px; /* Increase font size */
+    color: #f8f806;  
+    padding: 10px 10px;  
+    font-size: 20px;  
   }
   
   .nav-link:hover {
@@ -41,5 +40,12 @@ h5{
   padding: 10p 0px 10px;
   width: 80px;
   color: rgb(9, 240, 20);
+}
+.logout{
+  background-color: rgb(242, 9, 130);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px 20px 20px;
 }
   

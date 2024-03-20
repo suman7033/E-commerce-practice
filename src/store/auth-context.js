@@ -5,19 +5,27 @@ const AuthContext=React.createContext({
     items: [],
     price: 0,
     quantity: 0,
+    email: '',
+    token: 0,
     responseDataName: "",
-    SpecialProduct:[]
+    SpecialProduct:[],
+    isLogin: false,
 })
 
 export const AuthContextProvider=(props)=>{
    const [items,setItmes]=useState([]);
    const [price,setPrice]=useState();
    const [quantity,setQuantity]=useState();
+   const [email,setEmail]=useState();
+   const [token,setToken]=useState();
    const [responseDataName,setResponseDataName]=useState('');
    const [SpecialProduct,setSpecialProduct]=useState([]);
+   const [isLogin,setIsLogin]=useState(false);
 
+    
    const addItemHandler=(addData)=>{
      setItmes((prev)=>[...prev,addData]);
+     //setIsLogin(true);
    }
    const ApiNameHandler=(name)=>{
      setResponseDataName(name);
@@ -25,18 +33,37 @@ export const AuthContextProvider=(props)=>{
    }
    const showSpecialProductHandler=(data)=>{
       setSpecialProduct(data);
-      console.log("showSpecial",data);
+   }
+   const loginHandler=(token,email)=>{
+      setIsLogin(true);
+      setEmail(email);
+      setToken(token);
+   }
+   const removeHandler=()=>{
+      setEmail(null);
+      setToken(null);
+      setIsLogin(false);
+   }
+   const loginCheckHandler=()=>{
+     setIsLogin(true);
    }
 
 const contextValue={
     items: items,
     price: price,
+    email: email,
+    token: token,
     responseDataName:responseDataName,
     quantity: quantity,
     addItem: addItemHandler,
     responseDataName: ApiNameHandler,
     showSpecialProduct:showSpecialProductHandler,
-    SpecialProduct: SpecialProduct
+    SpecialProduct: SpecialProduct,
+    login: loginHandler,
+    isLogin: isLogin,
+    removeHandler: removeHandler,
+    LoginCheck: loginCheckHandler
+
 }
 
 return (

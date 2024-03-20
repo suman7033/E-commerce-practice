@@ -14,6 +14,7 @@ import About from "./component/About";
 import ShowCart from "./component/ShowCart";
 import AuthContext from "./store/auth-context";
 import ShowSpecific from "./component/ShowSpecific";
+import Login from "./component/Login/login";
 
 const App = () => {
   const [products,setProduct]=useState([
@@ -42,6 +43,13 @@ const [showdata,setshowdata]=useState([]);
   const authCtx=useContext(AuthContext);
 
    const fetchData=async ()=>{
+    const tokenId=localStorage.getItem('tokenId');
+    const email=localStorage.getItem('email');
+    authCtx.login(tokenId,email);
+    console.log("useEffect",tokenId);
+    console.log("useEffect",email);
+
+
       const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user.json`)
       const Data=await FetchData.json();
       let array=[];
@@ -56,7 +64,13 @@ const [showdata,setshowdata]=useState([]);
       }
    }
   useEffect(()=>{
+    // const tokenId=localStorage.getItem('tokenId');
+    // const email=localStorage.getItem('email');
+    // authCtx.login(tokenId,email);
+    // console.log("useEffect",tokenId);
+    // console.log("useEffect",email);
     fetchData();
+
   },[]);
    
   return (
@@ -64,11 +78,12 @@ const [showdata,setshowdata]=useState([]);
      <BrowserRouter>
        <Navbar/>
        <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/store' element={<Card products={products}/>}></Route>
-        <Route path='/about' element={<About/>}/>
-        <Route path='/cart' element={<ShowCart/>}/>
+        <Route path='/' element={authCtx.isLogin ? <Home/>: <Navigate to='/login'/>}/>
+        <Route path='/store' element={authCtx.isLogin ? <Card products={products}/>: <Navigate to='/login'/>}></Route>
+        <Route path='/about' element={authCtx.isLogin ? <About/>:<Navigate to='/login'/>}/>
+        <Route path='/cart' element={authCtx.isLogin ? <ShowCart/>: <Navigate to='/login'/>}/>
         <Route path="/product" element={<ShowSpecific/>}/>
+        <Route path='/login' element={<Login/>}></Route>
        </Routes>
      </BrowserRouter>
     </>

@@ -8,6 +8,9 @@ import AuthContext from '../../store/auth-context';
 
 const Navbar = () => {
   const authCtx=useContext(AuthContext);
+  const logoutHandler=()=>{
+    authCtx.removeHandler();
+  }
   return (
     <div className='maindev'>
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -22,6 +25,10 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to='/about'><b>ABOUT</b></Link>
             </li>
+            <li className='nav-item'>
+            <Link className='nav-link' to='/login'><b>&nbsp; LOGIN</b></Link>
+          </li>
+           
           </ul>
           <h1 className='nav-item'>
             <Link className='nav' to='/cart'>
@@ -29,6 +36,9 @@ const Navbar = () => {
             <img className='img' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkEtTQAtBcGUnBFiM9sUNuPfaBcUIZiaVRWB_OSnegHw&s'/>
             </Link>
           </h1>
+          <h2>
+            <button className='logout' onClick={()=>logoutHandler}>LOGOUT</button>
+          </h2>
         </div>
       </nav>
     </div>

@@ -1,0 +1,65 @@
+/* login.css */
+.auth {
+   width: 400px; 
+   margin: 50px auto;
+   padding: 40px;
+   border: 1px solid #ccc;
+   text-align: center;
+   border-radius: 10px;
+   background-color: #fff;
+ }
+ 
+ .auth h1 {
+   text-align: center;
+   margin-bottom: 20px;
+ }
+ 
+ .auth form {
+   display: flex;
+   flex-direction: column;
+   padding: 10px 10px 20px;
+ }
+ 
+ .auth .control {
+   margin-bottom: 20px; /* Increase the margin */
+ }
+ 
+ .auth .control label {
+   font-weight: bold;
+ }
+ 
+ .auth .control input[type="email"],
+ .auth .control input[type="password"] {
+   width: 100%;
+   padding: 12px; /* Increase the padding */
+   border: 1px solid #ccc;
+   border-radius: 5px;
+ }
+ 
+ .auth .action {
+   text-align: center;
+ }
+ 
+ .auth .toggle {
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   padding: 10px 30px 10px; /* Increase the padding */
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+
+   margin-top: 20px; /* Increase the margin */
+   cursor: pointer;
+   border-radius: 5px;
+ }
+ 
+ .auth .toggle:hover {
+   background-color: #45a049;
+ }
+ .link{
+    padding: 20px 10px 0px;
+    font-size: 30px;
+ }
+ 
