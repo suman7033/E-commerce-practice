@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import AuthContext from '../../store/auth-context';
@@ -59,6 +59,18 @@ const Login = () => {
         alert(err.message);
     })
   }
+
+//   const Autologin=()=>{
+//     const tokenId=localStorage.getItem('tokenId');
+//     const email=localStorage.getItem('email');
+//     authCtx.login(tokenId,email);
+//     console.log("useEffect",tokenId);
+//     console.log("useEffect",email);
+//     navigate('/store');
+//    }
+//    useEffect(()=>{
+//      Autologin();
+//    })
 
   return (
     <section className='auth'>

@@ -4,6 +4,7 @@ import {
   Route,
   BrowserRouter,
   Navigate,
+  useNavigate
 } from "react-router-dom";
 import './App.css';
 import { useContext, useEffect, useState } from 'react';
@@ -43,13 +44,6 @@ const [showdata,setshowdata]=useState([]);
   const authCtx=useContext(AuthContext);
 
    const fetchData=async ()=>{
-    const tokenId=localStorage.getItem('tokenId');
-    const email=localStorage.getItem('email');
-    authCtx.login(tokenId,email);
-    console.log("useEffect",tokenId);
-    console.log("useEffect",email);
-
-
       const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user.json`)
       const Data=await FetchData.json();
       let array=[];
@@ -64,13 +58,7 @@ const [showdata,setshowdata]=useState([]);
       }
    }
   useEffect(()=>{
-    // const tokenId=localStorage.getItem('tokenId');
-    // const email=localStorage.getItem('email');
-    // authCtx.login(tokenId,email);
-    // console.log("useEffect",tokenId);
-    // console.log("useEffect",email);
     fetchData();
-
   },[]);
    
   return (

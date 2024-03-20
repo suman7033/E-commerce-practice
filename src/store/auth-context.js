@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 
 const AuthContext=React.createContext({
@@ -22,7 +22,6 @@ export const AuthContextProvider=(props)=>{
    const [SpecialProduct,setSpecialProduct]=useState([]);
    const [isLogin,setIsLogin]=useState(false);
 
-    
    const addItemHandler=(addData)=>{
      setItmes((prev)=>[...prev,addData]);
      //setIsLogin(true);
@@ -40,9 +39,12 @@ export const AuthContextProvider=(props)=>{
       setToken(token);
    }
    const removeHandler=()=>{
+    alert("logout")
       setEmail(null);
       setToken(null);
       setIsLogin(false);
+      localStorage.removeItem('tokenId');
+      localStorage.removeItem('email');
    }
    const loginCheckHandler=()=>{
      setIsLogin(true);
@@ -61,7 +63,7 @@ const contextValue={
     SpecialProduct: SpecialProduct,
     login: loginHandler,
     isLogin: isLogin,
-    removeHandler: removeHandler,
+    remove: removeHandler,
     LoginCheck: loginCheckHandler
 
 }
