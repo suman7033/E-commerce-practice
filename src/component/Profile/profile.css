@@ -1,0 +1,40 @@
+/* Profile.css */
+
+.profile {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .profile h2 {
+    color: #333;
+  }
+  
+  .profile p {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .profile button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile button:hover {
+    background-color: #0056b3;
+  }
+  input{
+    width: 300px;
+    margin: 10px 20px 30px;
+    padding: 6px 6px 6px;
+    border-radius: 5px;
+  }
+  

@@ -16,6 +16,7 @@ import ShowCart from "./component/ShowCart";
 import AuthContext from "./store/auth-context";
 import ShowSpecific from "./component/ShowSpecific";
 import Login from "./component/Login/login";
+import Profile from "./component/Profile/profile";
 
 const App = () => {
   const [products,setProduct]=useState([
@@ -80,6 +81,7 @@ if(authCtx.email){
         <Route path='/cart' element={authCtx.isLogin ? <ShowCart/>: <Navigate to='/login'/>}/>
         <Route path="/product" element={<ShowSpecific/>}/>
         <Route path='/login' element={<Login/>}></Route>
+        <Route path='/profile' element={authCtx.isLogin ? <Profile/>:<Navigate to='/login'/>}/>
        </Routes>
      </BrowserRouter>
     </>
