@@ -9,12 +9,14 @@ const Card = ({ products }) => {
   const [ShowError, setShowError]=useState(false);
 
   const authCtx=useContext(AuthContext);
-
-
+  let ChangeEmail;
+  if(authCtx.email){
+    ChangeEmail=authCtx.email.replace('@','').replace('.','')
+  }
   const AddHandler = async (data) => {
     setIsloading(true);
     try {
-      const response = await fetch('https://practice-299c5-default-rtdb.firebaseio.com/user.json', {
+      const response = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}.json`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ const Card = ({ products }) => {
       authCtx.responseDataName(responseDataName);
 
       if (responseData && responseData.name) {
-        const addedDataRes = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${responseData.name}.json`);
+        const addedDataRes = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}.json`);
         if (!addedDataRes.ok) {
 
           throw new Error('Failed to get added data');

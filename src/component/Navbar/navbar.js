@@ -30,7 +30,7 @@ const Navbar = () => {
           </ul>
           <h1 className='nav-item'>
             <Link className='nav' to='/cart'>
-            <h5><b>{authCtx.items.length}</b></h5>
+            <h5><b>{authCtx.isLogin ? `${authCtx.items.length}`:'0'}</b></h5>
             <img className='img' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkEtTQAtBcGUnBFiM9sUNuPfaBcUIZiaVRWB_OSnegHw&s'/>
             </Link>
           </h1>

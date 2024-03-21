@@ -42,9 +42,14 @@ const App = () => {
 ]) 
 const [showdata,setshowdata]=useState([]);
   const authCtx=useContext(AuthContext);
-
+   console.log("aaaaaaaaaaaa",authCtx.email);
+   let ChangeEmail;
+if(authCtx.email){
+  ChangeEmail=authCtx.email.replace('@','').replace('.','')
+}
    const fetchData=async ()=>{
-      const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user.json`)
+      console.log("e---",ChangeEmail);
+      const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}.json`)
       const Data=await FetchData.json();
       let array=[];
        
@@ -52,14 +57,17 @@ const [showdata,setshowdata]=useState([]);
           const innerObject = Data[key];
           array.push(innerObject);                         
       }
-      console.log("useEffect",array);
+      console.log("useEffectFetch",array);
       for(let i=0; i<array.length; i++){
         authCtx.addItem(array[i]);
       }
    }
   useEffect(()=>{
-    fetchData();
-  },[]);
+    if(authCtx.isLogin==true){
+      console.log("Self useEffect");
+      fetchData();
+    }
+  },[authCtx.email]);
    
   return (
     <>

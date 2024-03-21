@@ -13,14 +13,16 @@ const AuthContext=React.createContext({
 })
 
 export const AuthContextProvider=(props)=>{
+  const initialToken=localStorage.getItem('tokenId')
+  const initialEmail=localStorage.getItem('email');
    const [items,setItmes]=useState([]);
    const [price,setPrice]=useState();
    const [quantity,setQuantity]=useState();
-   const [email,setEmail]=useState();
+   const [email,setEmail]=useState(initialEmail);
    const [token,setToken]=useState();
    const [responseDataName,setResponseDataName]=useState('');
    const [SpecialProduct,setSpecialProduct]=useState([]);
-   const [isLogin,setIsLogin]=useState(false);
+   const [isLogin,setIsLogin]=useState(!!initialToken);
 
    const addItemHandler=(addData)=>{
      setItmes((prev)=>[...prev,addData]);
@@ -34,7 +36,11 @@ export const AuthContextProvider=(props)=>{
       setSpecialProduct(data);
    }
    const loginHandler=(token,email)=>{
-      setIsLogin(true);
+    console.log('login',email);
+    console.log('tokenId',token);
+      if(email !=''){
+        setIsLogin(true);
+      }
       setEmail(email);
       setToken(token);
    }
@@ -43,6 +49,7 @@ export const AuthContextProvider=(props)=>{
       setEmail(null);
       setToken(null);
       setIsLogin(false);
+      setItmes(null);
       localStorage.removeItem('tokenId');
       localStorage.removeItem('email');
    }

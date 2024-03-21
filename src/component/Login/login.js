@@ -60,17 +60,20 @@ const Login = () => {
     })
   }
 
-//   const Autologin=()=>{
-//     const tokenId=localStorage.getItem('tokenId');
-//     const email=localStorage.getItem('email');
-//     authCtx.login(tokenId,email);
-//     console.log("useEffect",tokenId);
-//     console.log("useEffect",email);
-//     navigate('/store');
-//    }
-//    useEffect(()=>{
-//      Autologin();
-//    })
+  const Autologin=()=>{
+    const tokenId=localStorage.getItem('tokenId');
+    const email=localStorage.getItem('email');
+    authCtx.login(tokenId,email);
+    console.log("LoginuseEffect",tokenId);
+    console.log("LoginuseEffect",email);
+    navigate('/store');
+   }
+   useEffect(()=>{
+    if(authCtx.isLogin==true){
+         console.log("Login useEffect");
+        Autologin();
+    }
+   },[authCtx.email])
 
   return (
     <section className='auth'>
