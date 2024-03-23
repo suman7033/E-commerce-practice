@@ -1,56 +1,86 @@
+/* navbar.css */
+
+/* Set a background color for the navbar */
 .navbar {
-    background-color: #007bff; 
-    width: 100%;
-    padding: 0px 0px 0px;
-  }
+  background-color: #007bff;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
 
-  
-  .navbar-nav {
-    margin-left: auto; 
-  }
-  
-  .nav-link {
-    color: #f8f806;  
-    padding: 10px 10px;  
-    font-size: 20px;  
-  }
-  
-  .nav-link:hover {
-    background-color: #f75307; /* Darker blue color on hover */
-    border-radius: 5px;
-    width: 90px; /* Rounded corners on hover */
-  }
-  
-  .nav-item {
-    margin-right: 20px;
-    width: 230px; /* Spacing between navbar items */
-  }
-  
-  /* Optional: Adjust font size */
-  .nav-link {
-    font-size: 20px;
-  }
+/* Style the navigation links */
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
 
-  .img{
-    width: 50px;
-    cursor: pointer;
-    border-radius: 10px 10px 10px;
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
 }
-h5{
-  padding: 10p 0px 10px;
-  width: 80px;
-  color: rgb(9, 240, 20);
+
+.nav-link:hover {
+  color: #f8f8f8;
 }
-.logout{
-  background-color: rgb(242, 9, 130);
-  border-radius: 10px;
-  text-align: center;
-  font-size: 15px;
-  padding: 20px 20px 20px;
-}
-.img1{
+
+/* Style the profile image */
+.img1 {
   width: 40px;
-  cursor: pointer;
-  border-radius: 10px 10px 10px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-  
+
+/* Style the cart icon */
+.img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Style the logout button */
+.logout {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.logout:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbar-nav {
+    flex-direction: column; /* Stack links vertically */
+    gap: 10px; /* Reduce spacing between links */
+  }
+
+  .nav-link {
+    font-size: 14px; /* Smaller font size for small screens */
+  }
+
+  /* Add a button to toggle the navbar on small screens */
+  .navbar-toggle {
+    display: block;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
