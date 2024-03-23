@@ -52,7 +52,7 @@ const Login = () => {
          authCtx.login(data.idToken, data.email);
          localStorage.setItem("tokenId",data.idToken);
          localStorage.setItem("email",data.email);
-         alert("sucessfully Login");
+         //alert("sucessfully Login");
          navigate('/store');
     })
     .catch(err=>{

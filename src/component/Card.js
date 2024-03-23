@@ -35,16 +35,16 @@ const Card = ({ products }) => {
       authCtx.responseDataName(responseDataName);
 
       if (responseData && responseData.name) {
-        const addedDataRes = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}.json`);
+        const addedDataRes = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}/${responseDataName}.json`);
         if (!addedDataRes.ok) {
 
           throw new Error('Failed to get added data');
         }
         const addData = await addedDataRes.json();
-        //alert('Successfully added');
+        //alert("add sucessfully");
         setIsloading(false)
       console.log('Added Data:', addData);
-       authCtx.addItem(addData);
+      authCtx.addItem(addData);
          
       } else {
         throw new Error('Response data is null or missing "name" field');

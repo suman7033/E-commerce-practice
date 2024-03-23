@@ -5,6 +5,8 @@ import AuthContext from '../store/auth-context';
 
 const ShowCart = () => {
     const authCtx = useContext(AuthContext);
+    console.log("showCart",authCtx);
+
     const [showPopup, setShowPopup] = useState(false);
     const navigate = useNavigate();
 
@@ -13,8 +15,11 @@ const ShowCart = () => {
         console.log("show");
         navigate('/store');
     };
+    const CancelAddHandler=()=>{
+       
+    }
 
-    const totalPrice = authCtx.items?.reduce((total, item) => total + item.price, 0);
+     const totalPrice = authCtx.items.reduce((total, item) => total + parseFloat(item.price), 0);
 
     return (
       <>
@@ -24,10 +29,11 @@ const ShowCart = () => {
           <div className='closeBtn'>
             <h1 className='x' onClick={closePopupHandler}>X</h1>
           </div>
-            {authCtx.items?.map((item, index) => (
+            {authCtx.items.map((item, index) => (
                 <div key={index} className='product-item'>
+                    <h1 className='x1' onClick={CancelAddHandler}>X</h1>
                     <h3 className='title'>{item.title}</h3>
-                    <img src={item.imageUrl} alt='pic' />
+                    <img src={item.imageUrl} alt='pic'/>
                     <h3 className='price'>{item.price}</h3>
                 </div>
             ))}

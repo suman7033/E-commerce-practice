@@ -39,3 +39,14 @@
     width: 50px;
     border-radius: 10px;
 }
+.x1{
+  position: absolute;
+  color: red;
+  top: 60px;
+  left: 450px;
+  cursor: pointer;
+}
+.x1:hover{
+   background-color: gray;
+   width: 10%;
+}

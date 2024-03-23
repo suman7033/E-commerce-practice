@@ -5,9 +5,10 @@ import { useContext,useState } from 'react';
 import AuthContext from '../../store/auth-context';
 
 
-const Navbar = () => {
-  const authCtx=useContext(AuthContext); 
-     
+const Navbar = (props) => {
+  const authCtx=useContext(AuthContext);
+  console.log('navbar authCtx',authCtx.price);
+  
   return (
     <div className='maindev'>
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -31,7 +32,7 @@ const Navbar = () => {
           </ul>
           <h1 className='nav-item'>
             <Link className='nav-link' to='/cart'>
-            <h5><b>{authCtx.isLogin ? `${authCtx.items.length}`:'0'}</b></h5>
+            <h5><b>{authCtx.isLogin ? authCtx.items.length: '0'}</b></h5>
             <img className='img' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkEtTQAtBcGUnBFiM9sUNuPfaBcUIZiaVRWB_OSnegHw&s'/>
             </Link>
           </h1>
@@ -40,6 +41,7 @@ const Navbar = () => {
           </h2>
         </div>
       </nav>
+      {props.children}
     </div>
   );
 }

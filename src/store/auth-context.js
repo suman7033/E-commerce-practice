@@ -25,8 +25,9 @@ export const AuthContextProvider=(props)=>{
    const [isLogin,setIsLogin]=useState(!!initialToken);
 
    const addItemHandler=(addData)=>{
-     setItmes((prev)=>[...prev,addData]);
-     //setIsLogin(true);
+     setItmes(prev=>[...prev,addData]);
+    
+     console.log("after auth",addData)
    }
    const ApiNameHandler=(name)=>{
      setResponseDataName(name);
@@ -38,18 +39,18 @@ export const AuthContextProvider=(props)=>{
    const loginHandler=(token,email)=>{
     console.log('login',email);
     console.log('tokenId',token);
-      if(email !=''){
-        setIsLogin(true);
-      }
+      // if(email !=''){
+      //   setIsLogin(true);
+      // }
       setEmail(email);
       setToken(token);
+      setIsLogin(true);
    }
    const removeHandler=()=>{
     alert("logout")
       setEmail(null);
       setToken(null);
       setIsLogin(false);
-      setItmes(null);
       localStorage.removeItem('tokenId');
       localStorage.removeItem('email');
    }

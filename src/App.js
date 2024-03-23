@@ -52,6 +52,7 @@ if(authCtx.email){
       console.log("e---",ChangeEmail);
       const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}.json`)
       const Data=await FetchData.json();
+      console.log('Fetch data',Data);
       let array=[];
        
       for (const key in Data) {
@@ -62,13 +63,14 @@ if(authCtx.email){
       for(let i=0; i<array.length; i++){
         authCtx.addItem(array[i]);
       }
+      //authCtx.addItem(array);
    }
   useEffect(()=>{
     if(authCtx.isLogin==true){
       console.log("Self useEffect");
       fetchData();
     }
-  },[authCtx.email]);
+  },[]);
    
   return (
     <>
