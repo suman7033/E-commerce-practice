@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
+import React, { useState } from "react";
 
 const AuthContext=React.createContext({
     items: [],
     price: 0,
-    quantity: 0,
     email: '',
     token: 0,
     responseDataName: "",
@@ -16,8 +14,6 @@ export const AuthContextProvider=(props)=>{
   const initialToken=localStorage.getItem('tokenId')
   const initialEmail=localStorage.getItem('email');
    const [items,setItmes]=useState([]);
-   const [price,setPrice]=useState();
-   const [quantity,setQuantity]=useState();
    const [email,setEmail]=useState(initialEmail);
    const [token,setToken]=useState();
    const [responseDataName,setResponseDataName]=useState('');
@@ -25,8 +21,8 @@ export const AuthContextProvider=(props)=>{
    const [isLogin,setIsLogin]=useState(!!initialToken);
 
    const addItemHandler=(addData)=>{
-     setItmes(prev=>[...prev,addData]);
-    
+     //setItmes(prev=>[...prev,addData]);
+     setItmes(addData);
      console.log("after auth",addData)
    }
    const ApiNameHandler=(name)=>{
@@ -39,9 +35,6 @@ export const AuthContextProvider=(props)=>{
    const loginHandler=(token,email)=>{
     console.log('login',email);
     console.log('tokenId',token);
-      // if(email !=''){
-      //   setIsLogin(true);
-      // }
       setEmail(email);
       setToken(token);
       setIsLogin(true);
@@ -57,14 +50,18 @@ export const AuthContextProvider=(props)=>{
    const loginCheckHandler=()=>{
      setIsLogin(true);
    }
+   const DeleteHandler=(id)=>{
+      console.log('deleteId',id);
+      const arr=items.filter((prev)=>prev.id !==id)
+      setItmes(arr);
+   }
 
 const contextValue={
     items: items,
-    price: price,
     email: email,
     token: token,
     responseDataName:responseDataName,
-    quantity: quantity,
+    
     addItem: addItemHandler,
     responseDataName: ApiNameHandler,
     showSpecialProduct:showSpecialProductHandler,
@@ -72,7 +69,8 @@ const contextValue={
     login: loginHandler,
     isLogin: isLogin,
     remove: removeHandler,
-    LoginCheck: loginCheckHandler
+    LoginCheck: loginCheckHandler,
+    Delete: DeleteHandler
 
 }
 

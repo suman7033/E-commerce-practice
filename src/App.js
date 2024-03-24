@@ -1,10 +1,9 @@
 import {
-  BrowserRouter as Router,
+  BrowserRouter as router,
   Routes,
   Route,
   BrowserRouter,
   Navigate,
-  useNavigate
 } from "react-router-dom";
 import './App.css';
 import { useContext, useEffect, useState } from 'react';
@@ -41,7 +40,6 @@ const App = () => {
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
     }
 ]) 
-const [showdata,setshowdata]=useState([]);
   const authCtx=useContext(AuthContext);
    console.log("aaaaaaaaaaaa",authCtx.email);
    let ChangeEmail;
@@ -50,26 +48,29 @@ if(authCtx.email){
 }
    const fetchData=async ()=>{
       console.log("e---",ChangeEmail);
+      try{
       const FetchData=await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}.json`)
       const Data=await FetchData.json();
       console.log('Fetch data',Data);
-      let array=[];
-       
-      for (const key in Data) {
-          const innerObject = Data[key];
-          array.push(innerObject);                         
+      
+      let AfterFetch=[];
+      for(const key in Data){
+         const currentData={
+          id: key,
+          imageUrl: Data[key].imageUrl,
+          price: Data[key].price,
+          title: Data[key].title
+         }
+         AfterFetch.push(currentData);
       }
-      console.log("useEffectFetch",array);
-      for(let i=0; i<array.length; i++){
-        authCtx.addItem(array[i]);
-      }
-      //authCtx.addItem(array);
+      console.log('AfterFetch',AfterFetch);
+      authCtx.addItem(AfterFetch);
+    }catch (error){
+       console.log(error);
+    }
    }
   useEffect(()=>{
-    if(authCtx.isLogin==true){
-      console.log("Self useEffect");
-      fetchData();
-    }
+    fetchData();
   },[]);
    
   return (

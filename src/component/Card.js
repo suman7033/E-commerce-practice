@@ -4,9 +4,7 @@ import AuthContext from '../store/auth-context';
 import { Link } from 'react-router-dom';
 
 const Card = ({ products }) => {
-  const [data,setData]=useState([]);
   const [isLoading,setIsloading]=useState(false);
-  const [ShowError, setShowError]=useState(false);
 
   const authCtx=useContext(AuthContext);
   let ChangeEmail;
@@ -31,24 +29,11 @@ const Card = ({ products }) => {
   
       const responseData = await response.json();
       console.log('POST Response:', responseData);
-      const responseDataName=responseData.name;
-      authCtx.responseDataName(responseDataName);
 
-      if (responseData && responseData.name) {
-        const addedDataRes = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}/${responseDataName}.json`);
-        if (!addedDataRes.ok) {
+      const AddCardData={...data,id: responseData.name}
+      authCtx.addItem(prev=>[...prev,AddCardData]);
+      setIsloading(false);
 
-          throw new Error('Failed to get added data');
-        }
-        const addData = await addedDataRes.json();
-        //alert("add sucessfully");
-        setIsloading(false)
-      console.log('Added Data:', addData);
-      authCtx.addItem(addData);
-         
-      } else {
-        throw new Error('Response data is null or missing "name" field');
-      }
     } catch (error) {
       console.error(error);
     }

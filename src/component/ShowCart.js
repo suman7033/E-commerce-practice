@@ -5,21 +5,49 @@ import AuthContext from '../store/auth-context';
 
 const ShowCart = () => {
     const authCtx = useContext(AuthContext);
-    console.log("showCart",authCtx);
+    const [counts, setCounts] = useState({}); // State to store counts for each item
 
-    const [showPopup, setShowPopup] = useState(false);
+    console.log("showCart", authCtx.items);
+    
+    let ChangeEmail;
+    if(authCtx.email){
+      ChangeEmail = authCtx.email.replace('@', '').replace('.', '');
+    }
+
     const navigate = useNavigate();
 
     const closePopupHandler = () => {
-        setShowPopup(false);
+        //setShowPopup(false);
         console.log("show");
         navigate('/store');
     };
-    const CancelAddHandler=()=>{
-       
-    }
 
-     const totalPrice = authCtx.items.reduce((total, item) => total + parseFloat(item.price), 0);
+    const minusHandler = (id) => {
+      setCounts(prevCounts => ({
+        ...prevCounts,
+        [id]: (prevCounts[id] || 1) - 1 // Decrement count for the specific item
+      }));
+    };
+
+    const DeleteHandler = async (id) => {
+      try {
+        const response = await fetch(`https://practice-299c5-default-rtdb.firebaseio.com/user/${ChangeEmail}/${id}.json`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+             },
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to delete data');
+        }
+        authCtx.Delete(id);
+      } catch (error) {
+          console.log(error.message);
+      }
+    };
+
+    const totalPrice = authCtx.items.reduce((total, item) => total + parseFloat(item.price) * (counts[item.id] || 1), 0);
 
     return (
       <>
@@ -29,12 +57,17 @@ const ShowCart = () => {
           <div className='closeBtn'>
             <h1 className='x' onClick={closePopupHandler}>X</h1>
           </div>
-            {authCtx.items.map((item, index) => (
+            {authCtx.items.map((item,index) => (
                 <div key={index} className='product-item'>
-                    <h1 className='x1' onClick={CancelAddHandler}>X</h1>
+                    <button className='x1' onClick={() => DeleteHandler(item.id)}>X</button>
                     <h3 className='title'>{item.title}</h3>
                     <img src={item.imageUrl} alt='pic'/>
                     <h3 className='price'>{item.price}</h3>
+                    <div className="button-container">
+                      <button className='minus' onClick={() => minusHandler(item.id)}><b>-</b></button>
+                      <h1>{counts[item.id] || 1}</h1>
+                      <button className='plus' onClick={() => setCounts(prevCounts => ({...prevCounts, [item.id]: (prevCounts[item.id] || 1) + 1}))}><b>+</b></button>
+                    </div>
                 </div>
             ))}
             <h2 className='total'>Total Price: $ &nbsp; &nbsp;{totalPrice.toFixed(2)}</h2>

@@ -40,13 +40,44 @@
     border-radius: 10px;
 }
 .x1{
-  position: absolute;
-  color: red;
-  top: 60px;
-  left: 450px;
+  position: relative;
+  color: rgb(0, 30, 255);
+  top: 15px;
+  left: 170px;
+  background-color: red;
+  border-radius: 10px;
   cursor: pointer;
+  width: 10%;
+  height: 35px;
+  color: white;
+  font-size: 20px;
 }
 .x1:hover{
-   background-color: gray;
+   background-color: rgb(218, 217, 203);
    width: 10%;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Buttons ko horizontally center karna */
+    margin-top: 10px; /* Optional: Top margin for spacing */
+}
+.plus,
+.minus {
+    background-color: rgb(138, 227, 125);
+    padding: 12px 20px; /* Padding increase karke buttons ko mote banayein */
+    margin: 0 30px; /* Spacing between buttons */
+    font-size: 20px; /* Font size increase karne se button bade dikhenge */
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.minus {
+    background-color: red;
+}
+h1{
+    color: white;
+}
+
+
