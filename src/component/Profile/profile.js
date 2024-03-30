@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const authCtx=useContext(AuthContext);
-    const name=authCtx.email.substring(0,4);
+    const name=authCtx.email.substring(0,5);
     const email=authCtx.email;
     const passwordRef=useRef();
     const navigate=useNavigate();
